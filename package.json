@@ -3,13 +3,16 @@
 		"dev": "tsx watch src/server.ts"
 	},
 	"devDependencies": {
+		"class-validator": "^0.14.1",
 		"tsx": "^4.7.1",
 		"type-graphql": "^1.1.1",
 		"typescript": "^5.4.2"
 	},
 	"dependencies": {
 		"@prisma/client": "5.10.2",
+		"apollo-server": "^3.13.0",
 		"graphql": "^16.8.1",
-		"prisma": "^5.10.2"
+		"prisma": "^5.10.2",
+		"reflect-metadata": "^0.2.1"
 	}
 }
