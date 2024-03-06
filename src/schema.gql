@@ -8,6 +8,10 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Mutation {
+  createStudent(data: StudentDTO!): Student!
+}
+
 type Query {
   listStudents: [Student!]!
 }
@@ -16,5 +20,10 @@ type Student {
   createdAt: DateTime!
   email: String!
   id: ID!
+  nick: String!
+}
+
+input StudentDTO {
+  email: String!
   nick: String!
 }
