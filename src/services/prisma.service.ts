@@ -44,4 +44,16 @@ export class PrismaService extends PrismaClient{
     console.log(courses);
     return courses;
   }
+
+  async registerStudentOnCourse(body: any){
+
+    const { studentId, courseId } = body;
+
+    return await this.studentCourse.create({
+      data: {
+        studentId,
+        courseId
+      }
+    })
+  }
 }

@@ -3,6 +3,7 @@ import { Student } from "../models/student-model";
 import { PrismaService } from "../services/prisma.service";
 import { StudentDTO } from "../dtos/student-dto";
 import { Course } from "../models/course-model";
+import { StudentOnCourseDTO } from "../dtos/student-on-course.model";
 
 //not using dependecy injection..
 const prisma = new PrismaService()
@@ -20,9 +21,16 @@ export class StudentResolver{
     return prisma.createStudent(data);
   }
 
-  @FieldResolver(() => Course)
+  @FieldResolver(() => [Course])
   async courses(@Root() student: Student){
     return prisma.listStudentCourses(student.id);
+  }
+
+  @Mutation(() => Boolean)
+  async registerStudentOnCourse(@Arg('data', () => StudentOnCourseDTO) data: StudentOnCourseDTO){
+    prisma.registerStudentOnCourse(data);
+
+    return true
   }
 
 }
