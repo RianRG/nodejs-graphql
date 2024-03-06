@@ -3,6 +3,11 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Course {
+  id: ID!
+  title: String!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
@@ -17,6 +22,7 @@ type Query {
 }
 
 type Student {
+  courses: Course!
   createdAt: DateTime!
   email: String!
   id: ID!

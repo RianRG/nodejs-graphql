@@ -21,4 +21,27 @@ export class PrismaService extends PrismaClient{
       }
     })
   }
+
+  async listStudentCourses(id: string){
+    const relation = await this.studentCourse.findMany({
+      where: {
+        studentId: id
+      }
+    })
+    
+    const courses = relation.map(async data =>{
+      const { title } = await this.course.findUnique({
+        where: {
+          id: data.courseId
+        }
+      })
+      return {
+        id: data.courseId,
+        title,
+      }
+    })
+
+    console.log(courses);
+    return courses;
+  }
 }

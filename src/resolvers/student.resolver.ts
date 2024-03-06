@@ -1,12 +1,13 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { Student } from "../models/student-model";
 import { PrismaService } from "../services/prisma.service";
 import { StudentDTO } from "../dtos/student-dto";
+import { Course } from "../models/course-model";
 
 //not using dependecy injection..
 const prisma = new PrismaService()
 
-@Resolver()
+@Resolver(() => Student)
 export class StudentResolver{
   
   @Query(() => [Student])
@@ -18,4 +19,10 @@ export class StudentResolver{
   async createStudent(@Arg('data', () => StudentDTO) data: StudentDTO){
     return prisma.createStudent(data);
   }
+
+  @FieldResolver(() => Course)
+  async courses(@Root() student: Student){
+    return prisma.listStudentCourses(student.id);
+  }
+
 }
