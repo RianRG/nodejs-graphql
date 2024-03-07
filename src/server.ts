@@ -16,7 +16,8 @@ async function main(){
   })
 
   const server = new ApolloServer({
-    schema
+    schema,
+    context: ({ req, res }) => ({ req, res })
   });
 
   const { url } = await server.listen();
