@@ -13,13 +13,19 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Login {
+  accessToken: String!
+}
+
 type Mutation {
   createStudent(data: StudentDTO!): Student!
+  loginStudent(data: StudentDTO!): Login!
   registerStudentOnCourse(data: StudentOnCourseDTO!): Boolean!
 }
 
 type Query {
   listStudents: [Student!]!
+  me: String!
 }
 
 type Student {

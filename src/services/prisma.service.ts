@@ -41,7 +41,6 @@ export class PrismaService extends PrismaClient{
       }
     })
 
-    console.log(courses);
     return courses;
   }
 
@@ -53,6 +52,14 @@ export class PrismaService extends PrismaClient{
       data: {
         studentId,
         courseId
+      }
+    })
+  }
+
+  async findStudent(email: string){
+    return await this.student.findFirst({
+      where: {
+        email
       }
     })
   }
