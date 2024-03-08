@@ -2,7 +2,8 @@
 <p>
 </p>
 
-> A backend system with GRAPHQL and jwt authorization
+> A backend system with GRAPHQL and jwt authorization, using a POSTGRES database on DOCKER, please use docker-compose too. It's an api based on courses and students, where the student can join a course, see his own courses, list all courses and other systems (based on JWT authentication)
+
 
 ## Install
 
